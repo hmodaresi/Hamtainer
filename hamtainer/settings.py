@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os
 
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,6 +26,14 @@ SECRET_KEY = 'django-insecure-mvvi#guan^634^v(exgs6t7g$2kgz&o+c8$^_x=a0bk0q8y4*m
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# setup django-environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 ALLOWED_HOSTS = []
 
