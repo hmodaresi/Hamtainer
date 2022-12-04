@@ -20,11 +20,10 @@ class App(models.Model):
 
 
 class Container(models.Model):
-    class ContainerStatus(models.TextChoices):
-        RUNNING = 'R', 'Running'
-        FINISHED = 'F', 'Finished'
-
     app = models.ForeignKey(App, on_delete=models.CASCADE)
-    status = models.CharField(max_length=1, choices=ContainerStatus.choices, default=ContainerStatus.RUNNING)
     env_vars = ArrayField(base_field=models.CharField(max_length=100))
     docker_id = models.CharField(max_length=100, default='')
+
+    @property
+    def status(self):
+        return docker_client.containers.get(self.docker_id).status

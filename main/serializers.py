@@ -10,6 +10,8 @@ class AppSerializer(serializers.ModelSerializer):
 
 
 class ContainerSerializer(serializers.ModelSerializer):
+    status = serializers.CharField()
+
     class Meta:
         model = Container
         fields = '__all__'
