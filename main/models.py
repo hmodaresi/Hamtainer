@@ -17,7 +17,7 @@ class App(models.Model):
         docker_client.images.pull(self.image)
 
     def run(self):
-        container = docker_client.containers.run(self.image, command=self.command, detach=True)
+        container = docker_client.containers.run(self.image, environment=self.env, command=self.command, detach=True)
         Container.objects.create(app=self, command=self.command, env=self.env, docker_id=container.id)
 
 
