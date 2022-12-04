@@ -11,20 +11,20 @@ class App(models.Model):
     name = models.CharField(max_length=100)
     image = models.CharField(max_length=100)
     command = models.CharField(max_length=150)
-    env_vars = ArrayField(base_field=models.CharField(max_length=100))
+    env = models.JSONField(blank=True)
 
     def pull(self):
         docker_client.images.pull(self.image)
 
     def run(self):
         container = docker_client.containers.run(self.image, command=self.command, detach=True)
-        Container.objects.create(app=self, command=self.command, env_vars=self.env_vars, docker_id=container.id)
+        Container.objects.create(app=self, command=self.command, env=self.env, docker_id=container.id)
 
 
 class Container(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     app = models.ForeignKey(App, on_delete=models.CASCADE)
-    env_vars = ArrayField(base_field=models.CharField(max_length=100))
+    env = models.JSONField(blank=True)
     command = models.CharField(max_length=100)
     docker_id = models.CharField(max_length=100, default='')
 
