@@ -1,0 +1,8 @@
+Hi There,
+
+HamTainer is built with the vision of being the next cloud provider in Iran. HamTainer uses docker engine to run containers.
+
+Next Steps:
+- add celery to pull and run docker images asyncly
+- add authentication to APIs
+- enhance namings
