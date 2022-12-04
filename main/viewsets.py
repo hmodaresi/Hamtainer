@@ -11,10 +11,14 @@ class AppViewSet(viewsets.ModelViewSet):
     queryset = App.objects.all()
     serializer_class = AppSerializer
 
+    def perform_create(self, serializer):
+        super().perform_create(serializer)
+        serializer.instance.pull()
+
     @action(detail=True, methods=['POST'])
     def run(self, request, pk):
         app = self.get_object()
-        Container.objects.create(app=app, env_vars=app.env_vars)
+        app.run()
         return Response(data={'msg': "Let's run the app", }, status=200)
 
 
