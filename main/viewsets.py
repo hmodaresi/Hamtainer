@@ -1,4 +1,6 @@
 from rest_framework import viewsets, mixins
+from rest_framework.response import Response
+from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
 
 from main.models import App, Container
@@ -8,6 +10,12 @@ from main.serializers import AppSerializer, ContainerSerializer
 class AppViewSet(viewsets.ModelViewSet):
     queryset = App.objects.all()
     serializer_class = AppSerializer
+
+    @action(detail=True, methods=['POST'])
+    def run(self, request, pk):
+        app = self.get_object()
+        Container.objects.create(app=app, env_vars=app.env_vars)
+        return Response(data={'msg': "Let's run the app", }, status=200)
 
 
 class ContainerViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
