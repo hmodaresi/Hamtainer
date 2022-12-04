@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "dcfe2240-729a-4963-9d30-4b888c20aebf",
+		"name": "hamtainer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[GET] app",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/main/app",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"app"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] app",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"alpine\",\n    \"image\": \"alpine\",\n    \"command\": \"echo $name\",\n    \"env\": {\"name\":\"Hello World :)\"}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/main/app/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"app",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[DEL] app",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/main/app/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"app",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[PATCH] app",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Api-Key",
+						"type": "text",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"command\": \"echo Hello World\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/main/app/15/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"app",
+						"15",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[POST] app/<id>/run",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/main/app/2/run/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"app",
+						"2",
+						"run",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] container",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "service.SGXEJt6kp4BaXv5BsG0dVqxnXMAGkUsfS00zBpK0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/main/container?app=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"main",
+						"container"
+					],
+					"query": [
+						{
+							"key": "app",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
